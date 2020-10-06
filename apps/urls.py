@@ -3,5 +3,4 @@
 # @Author  : Zhiwei Yang
 assignees = ["tencrance@gmail.com"]
 github_base_url = "https://api.github.com"
-# issues_url = "/repos/octocat/hello-world/issues"
 issues_url = "/repos/niasand/experiment_code/issues"
