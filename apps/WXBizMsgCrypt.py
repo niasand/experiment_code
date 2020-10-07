@@ -13,15 +13,11 @@ import random
 import hashlib
 import time
 import struct
-from importlib import reload
-
 from Crypto.Cipher import AES
 import xml.etree.cElementTree as ET
 import sys
 import socket
-
-from apps import ierror
-
+import ierror
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
