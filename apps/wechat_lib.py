@@ -7,9 +7,9 @@ import xml.etree.ElementTree as ET
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 from flask import Flask, request, jsonify
-from .github_tool import GithubIssue
-from .secrets import *
-from .WXBizMsgCrypt import WXBizMsgCrypt
+from github_tool import GithubIssue
+from secrets import *
+from WXBizMsgCrypt import WXBizMsgCrypt
 import time
 
 

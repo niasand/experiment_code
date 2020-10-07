@@ -2,8 +2,8 @@
 # @Time    : 2020-10-06 22:42
 # @Author  : Zhiwei Yang
 import requests
-from apps.secrets import headers
-from apps.urls import *
+from secrets import headers
+from urls import *
 
 
 class GithubIssue():
