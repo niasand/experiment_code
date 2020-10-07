@@ -16,18 +16,22 @@ class GithubIssue():
         issues = []
         open_issues = self.repo.get_issues()
         for issue in open_issues:
-            issues.append(issue)
+            issues.append(issue.number)
         return issues
 
     def create_an_issues(self, title, body):
         self.repo.create_issue(title=title, body=body)
 
-    def get_issue_detail(self):
+    def get_issue_detail(self, issue_number):
         ret = self.repo.get_issue(number=issue_number)
-        return ret
+        print(ret.url, ret.title, ret.body)
+        msg = "url: {}\ntitle: {}\nbody: {}\n".format(ret.url, ret.title, ret.body)
+        print(msg)
+        return msg
 
 
 if __name__ == '__main__':
     G = GithubIssue()
     # print(G.create_an_issues("1", "2"))
     print(G.get_issue_list())
+    print(G.get_issue_detail(6))
