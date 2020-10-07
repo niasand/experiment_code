@@ -92,7 +92,7 @@ def autoreply(decryp_xml, nonce):
 
 @app.route('/api/token_check/', methods=["POST"])
 def wechat():
-    data = request.json
+    data = request.args
     signature = data.get("signature", "")
     timestamp = data.get("timestamp", "")
     nonce = data.get("nonce", "")
@@ -107,7 +107,7 @@ def wechat():
         return jsonify(echo_str)
     else:
         decrypt_test = WXBizMsgCrypt(token, encoding_aes_key, appid)
-        ret, decryp_xml = decrypt_test.DecryptMsg(request.body, msg_signature, timestamp, nonce)
+        ret, decryp_xml = decrypt_test.DecryptMsg(request.data, msg_signature, timestamp, nonce)
         print("decryp_xml: %s" % decryp_xml)
         othercontent = autoreply(decryp_xml, nonce)
         return jsonify(othercontent)

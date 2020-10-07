@@ -2,36 +2,29 @@
 # @Time    : 2020-10-06 22:42
 # @Author  : Zhiwei Yang
 import requests
-from secrets import headers
+from secrets import headers, access_token
+from github import Github
 from urls import *
 
 
 class GithubIssue():
     def __init__(self):
-        self.g = requests.Session()
+        self.g = Github(access_token)
+        self.repo = self.g.get_repo(my_repo)
 
     def get_issue_list(self):
-        r = self.g.get(github_base_url + issues_url, headers=headers)
-        if r.status_code == 200:
-            return r.json()
-        else:
-            return {"retcode": -1}
+        issues = []
+        open_issues = self.repo.get_issues()
+        for issue in open_issues:
+            issues.append(issue)
+        return issues
 
     def create_an_issues(self, title, body):
-        data = {"title": title, "body": body}
-        r = self.g.post(github_base_url + issues_url, json=data, headers=headers)
-        if r.status_code == 200:
-            return r.json()
-        else:
-            return {"retcode": -1}
+        self.repo.create_issue(title=title, body=body)
 
-    def get_issue_detail(self, issue_number):
-        issue_detail = "{}/{}".format(issues_url, issue_number, headers=headers)
-        r = self.g.get(github_base_url + issue_detail)
-        if r.status_code == 200:
-            return r.json()
-        else:
-            return {"retcode": -1}
+    def get_issue_detail(self):
+        ret = self.repo.get_issue(number=issue_number)
+        return ret
 
 
 if __name__ == '__main__':
