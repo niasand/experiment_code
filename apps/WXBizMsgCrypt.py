@@ -20,7 +20,7 @@ import xml.etree.cElementTree as ET
 import sys
 import socket
 
-from apps.wechat import ierror
+from apps import ierror
 
 reload(sys)
 sys.setdefaultencoding('utf-8')

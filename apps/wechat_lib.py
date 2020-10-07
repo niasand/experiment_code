@@ -10,7 +10,7 @@ from wechatpy.utils import check_signature
 from flask import Flask, request, jsonify
 from apps.github_tool import GithubIssue
 from apps.secrets import *
-from apps.wechat.WXBizMsgCrypt import WXBizMsgCrypt
+from apps.WXBizMsgCrypt import WXBizMsgCrypt
 import time
 
 
