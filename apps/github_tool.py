@@ -36,5 +36,5 @@ class GithubIssue():
 
 if __name__ == '__main__':
     G = GithubIssue()
-    print(G.create_an_issues("1", "2"))
+    # print(G.create_an_issues("1", "2"))
     print(G.get_issue_list())
