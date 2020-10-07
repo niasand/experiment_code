@@ -24,14 +24,13 @@ class GithubIssue():
 
     def get_issue_detail(self, issue_number):
         ret = self.repo.get_issue(number=issue_number)
-        print(ret.url, ret.title, ret.body)
-        msg = "url: {}\ntitle: {}\nbody: {}\n".format(ret.url, ret.title, ret.body)
-        print(msg)
+        msg = "url: {}\ttitle: {}\tbody: {}\t".format(ret.url, ret.title, ret.body)
         return msg
 
 
 if __name__ == '__main__':
     G = GithubIssue()
     # print(G.create_an_issues("1", "2"))
-    print(G.get_issue_list())
-    print(G.get_issue_detail(6))
+    issue_numbers = G.get_issue_list()
+    content = G.get_issue_detail(issue_numbers[0])
+    print(content)

@@ -61,8 +61,9 @@ def autoreply(decryp_xml, nonce):
         im_msgs = in_msg.split(" ")
         github.create_an_issues(im_msgs[0], in_msg)
         issue_numbers = github.get_issue_list()
-        msg = github.get_issue_detail(issue_numbers[0])
-        replymsg = TextMsg(touser, fromuser, msg, decryp_xml)
+        content = github.get_issue_detail(issue_numbers[0])
+        print ("content", content)
+        replymsg = TextMsg(touser, fromuser, content, decryp_xml)
         return replymsg.send(nonce)
 
     elif msg_type == 'image':
