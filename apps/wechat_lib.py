@@ -2,15 +2,14 @@
 # !/usr/bin/env python
 # Created by zhiweiyang
 # Create At: 2020/7/31
-# Email: zhiwei.yang@shopee.com
-# -*- coding: utf-8 -*-
+
 import xml.etree.ElementTree as ET
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 from flask import Flask, request, jsonify
-from apps.github_tool import GithubIssue
-from apps.secrets import *
-from apps.WXBizMsgCrypt import WXBizMsgCrypt
+from .github_tool import GithubIssue
+from .secrets import *
+from .WXBizMsgCrypt import WXBizMsgCrypt
 import time
 
 
