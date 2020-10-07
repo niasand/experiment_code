@@ -6,7 +6,7 @@
 import xml.etree.ElementTree as ET
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from github_tool import GithubIssue
 from secrets import *
 from WXBizMsgCrypt import WXBizMsgCrypt
@@ -54,16 +54,15 @@ def autoreply(decryp_xml, nonce):
     msg_type = decryp_xml.find('MsgType').text
     tousername = decryp_xml.find('ToUserName').text
     fromusername = decryp_xml.find('FromUserName').text
-    in_msg = decryp_xml.find('Content').text
     touser, fromuser = fromusername, tousername
     github = GithubIssue()
     if msg_type == 'text':
+        in_msg = decryp_xml.find('Content').text
         im_msgs = in_msg.split(" ")
         github.create_an_issues(im_msgs[0], in_msg)
         issue_numbers = github.get_issue_list()
         content = github.get_issue_detail(issue_numbers[0])
-        print ("content", content)
-        replymsg = TextMsg(touser, fromuser, content, decryp_xml)
+        replymsg = TextMsg(touser, fromuser, str(content), decryp_xml)
         return replymsg.send(nonce)
 
     elif msg_type == 'image':
@@ -106,13 +105,13 @@ def wechat():
     except InvalidSignatureException:
         print('InvalidSignatureException')
     if request.method == "GET":
-        return jsonify(echo_str)
+        return make_response(echo_str)
     else:
         decrypt_test = WXBizMsgCrypt(token, encoding_aes_key, appid)
         ret, decryp_xml = decrypt_test.DecryptMsg(request.data, msg_signature, timestamp, nonce)
         print("decryp_xml: %s" % decryp_xml)
         othercontent = autoreply(decryp_xml, nonce)
-        return jsonify(othercontent)
+        return make_response(othercontent)
 
 
 if __name__ == '__main__':

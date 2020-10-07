@@ -24,7 +24,7 @@ class GithubIssue():
 
     def get_issue_detail(self, issue_number):
         ret = self.repo.get_issue(number=issue_number)
-        msg = "url: {}\ttitle: {}\tbody: {}\t".format(ret.url, ret.title, ret.body)
+        msg = "url: {}\ntitle: {}\nbody: {}\n".format(ret.url, ret.title, ret.body)
         return msg
 
 
