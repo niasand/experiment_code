@@ -90,7 +90,7 @@ def autoreply(decryp_xml, nonce):
         return replymsg.send(nonce)
 
 
-@app.route('/api/token_check/')
+@app.route('/api/token_check/', methods=["POST"])
 def wechat():
     data = request.json
     signature = data.get("signature", "")
