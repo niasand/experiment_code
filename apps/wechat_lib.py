@@ -58,10 +58,8 @@ def autoreply(decryp_xml, nonce):
     github = GithubIssue()
     if msg_type == 'text':
         in_msg = decryp_xml.find('Content').text
-        im_msgs = in_msg.split(" ")
-        issue_number = github.create_an_issues(im_msgs[0], in_msg)
-        # issue_numbers = github.get_issue_list()
-        content = github.get_issue_detail(issue_number)
+        issue_numbers = github.get_issue_list()
+        content = github.create_comments(issue_numbers[0], in_msg)
         replymsg = TextMsg(touser, fromuser, str(content), decryp_xml)
         return replymsg.send(nonce)
 
