@@ -2,9 +2,10 @@
 # @Time    : 2020-10-06 22:42
 # @Author  : Zhiwei Yang
 import requests
-from secrets import headers, access_token
+# from secrets import headers, access_token
 from github import Github
-from urls import *
+from apps.secrets import access_token, headers
+from .urls import *
 
 
 class GithubIssue():
@@ -25,7 +26,8 @@ class GithubIssue():
 
     def get_issue_detail(self, issue_number):
         ret = self.repo.get_issue(number=issue_number)
-        msg = "url: {}\ntitle: {}\nbody: {}\n".format(ret.url, ret.title, ret.body)
+        msg = "url: {}\ntitle: {}\nbody: {}\n".format(
+            ret.url, ret.title, ret.body)
         return msg
 
 
