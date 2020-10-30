@@ -3,14 +3,26 @@
 # @Create At: 2019-02-23 19:22:08
 # @Last Modified At: 2019-02-23 19:22:08
 
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
 
 lc = pd.read_csv("phone_data.csv")
-df = pd.pivot_table(lc,index=["month"],values=["duration"],aggfunc=np.sum)
-df3 = pd.pivot_table(lc,index=["month"],values=["duration","date"],aggfunc=[np.sum,np.mean,len],fill_value=0)
-df1 = pd.pivot_table(lc,index=["month","date"],values=["duration"],columns=["index"])
-df2 = pd.pivot_table(lc,index=["month","date"],values=["duration","network_type"])
+df = pd.pivot_table(lc, index=["month"], values=["duration"], aggfunc=np.sum)
+df3 = pd.pivot_table(
+    lc, index=["month"], values=[
+        "duration", "date"], aggfunc=[
+            np.sum, np.mean, len], fill_value=0)
+df1 = pd.pivot_table(
+    lc,
+    index=[
+        "month",
+        "date"],
+    values=["duration"],
+    columns=["index"])
+df2 = pd.pivot_table(
+    lc, index=[
+        "month", "date"], values=[
+            "duration", "network_type"])
 
 
 """
