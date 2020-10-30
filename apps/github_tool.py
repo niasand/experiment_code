@@ -4,7 +4,7 @@
 import requests
 # from secrets import headers, access_token
 from github import Github
-from apps.secrets import access_token, headers
+from .secrets import access_token, headers
 from .urls import *
 
 
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     # issue_number = G.create_an_issues("1", "2")
     # content = G.get_issue_detail(issue_number)
     issue_numbers = G.get_issue_list()
-    print G.create_comments(issue_numbers[0], "hello")
+    print(G.create_comments(issue_numbers[0], "hello"))
     # content = G.get_issue_detail(issue_numbers[0])
     # print(content)
