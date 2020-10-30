@@ -30,11 +30,19 @@ class GithubIssue():
             ret.url, ret.title, ret.body)
         return msg
 
+    def create_comments(self, issue_number, body):
+        issue = self.repo.get_issue(issue_number)
+        ret = issue.create_comment(body)
+        c = issue.get_comment(ret.id)
+        comments = "%s\n%s\n" % (c.html_url, c.body)
+        return comments
+
 
 if __name__ == '__main__':
     G = GithubIssue()
     # issue_number = G.create_an_issues("1", "2")
     # content = G.get_issue_detail(issue_number)
-    # issue_numbers = G.get_issue_list()
+    issue_numbers = G.get_issue_list()
+    print G.create_comments(issue_numbers[0], "hello")
     # content = G.get_issue_detail(issue_numbers[0])
     # print(content)
