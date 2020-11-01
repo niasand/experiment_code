@@ -2,10 +2,9 @@
 # @Time    : 2020-10-06 22:42
 # @Author  : Zhiwei Yang
 import requests
-# from secrets import headers, access_token
 from github import Github
-from .secrets import access_token, headers
-from .urls import *
+from apps.secrets import access_token
+from apps.urls import my_repo
 
 
 class GithubIssue():
@@ -43,6 +42,6 @@ if __name__ == '__main__':
     # issue_number = G.create_an_issues("1", "2")
     # content = G.get_issue_detail(issue_number)
     issue_numbers = G.get_issue_list()
-    print(G.create_comments(issue_numbers[0], "hello"))
+    print(G.create_comments(issue_numbers[0], u"999"))
     # content = G.get_issue_detail(issue_numbers[0])
     # print(content)
