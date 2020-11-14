@@ -31,4 +31,4 @@ if __name__ == '__main__':
     coins = [1, 2, 5]
     amount = 2
     c = CoinChange()
-    print (c.coin_change(coins, amount))
+    print(c.coin_change(coins, amount))

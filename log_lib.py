@@ -19,7 +19,7 @@ def log_type(record, handler):
 
 
 # 日志存放路径
-LOG_DIR = os.path.expanduser("~/Downloads")
+LOG_DIR = os.path.expanduser("~/")
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 # 日志打印到屏幕
