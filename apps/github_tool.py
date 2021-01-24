@@ -36,12 +36,20 @@ class GithubIssue():
         comments = "%s\n%s\n" % (c.html_url, c.body)
         return comments
 
+    def get_comment_list(self, issue_number):
+        issue = self.repo.get_issue(issue_number)
+        for i in issue.get_comments():
+            c = issue.get_comment(i.id)
+            comments = "%s\n%s\n" % (c.html_url, c.body)
+            print(comments)
+
 
 if __name__ == '__main__':
     G = GithubIssue()
     # issue_number = G.create_an_issues("1", "2")
     # content = G.get_issue_detail(issue_number)
-    issue_numbers = G.get_issue_list()
-    print(G.create_comments(issue_numbers[0], u"999"))
+    issue_id = G.get_issue_list()[0]
+    G.get_comment_list(issue_id)
+    # print(G.create_comments(issue_numbers[0], u"999"))
     # content = G.get_issue_detail(issue_numbers[0])
     # print(content)

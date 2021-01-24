@@ -32,5 +32,32 @@ def remove_duplicates(nums: list) -> int:
     return slow + 1
 
 
+def find_max_length():
+    """
+    给定一个无序的整数数组，找到其中最长上升子序列的长度。
+    示例:
+    输入: [10,9,2,5,3,7,101,18]
+    输出: 4
+    解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4
+    :return:
+    """
+    nums = [10, 9, 2, 2, 5, 3, 7, 6, 101, 18, 8]
+    ret = []
+    minum_number = min(nums)
+    for i in range(0, len(nums)):
+        if nums[i] <= minum_number:
+            ret.append(nums[i])
+        if ret and nums[i] > ret[-1] and nums[i] <= min(nums[i:]):
+            ret.append(nums[i])
+
+    # for i in range(1, len(nums)):
+    #     if nums[i-1] <= nums[i]:
+    #         ret.append(nums[i-1])
+    #         if nums[i] > max(nums[i+1:]):
+    #             ret.append(nums[i:][0])
+
+    print(ret)
+
+
 if __name__ == '__main__':
-    log.info(remove_duplicates([1, 1, 2, 2, 3, 4, 4]))
+    find_max_length()

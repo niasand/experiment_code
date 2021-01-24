@@ -3,6 +3,9 @@
 # @Date:   2017-09-25 21:40:27
 # @Last Modified by:   jerry
 # @Last Modified time: 2017-09-25 21:45:54
+import typer
+
+app = typer.Typer()
 
 
 class Solution:
@@ -12,7 +15,7 @@ class Solution:
     @return : [index1 + 1, index2 + 1] (index1 < index2)
     """
 
-    def twoSum(self, numbers, target):
+    def twosum(self, numbers, target):
         ret = []
         for i in range(len(numbers)):
             for j in range(i + 1, len(numbers)):
@@ -24,7 +27,7 @@ class Solution:
 
 
 class Solution1(object):
-    def twoSum(self, nums, target):
+    def twosum(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
@@ -46,7 +49,7 @@ def soluton1():
     nums = [2, 7, 11, 15]
     target = 9
     r = Solution1()
-    s = r.twoSum(nums, target)
+    s = r.twosum(nums, target)
     print(s)
 
 
@@ -54,9 +57,28 @@ def solution():
     a = Solution()
     numbers = [98, 23, 3, 4, 5]
     target = 26
-    c = a.twoSum(numbers, target)
+    c = a.twosum(numbers, target)
+
+
+def main(name: str):
+    typer.echo(f"Hello {name}")
+
+
+@app.command()
+def hello(name: str):
+    typer.echo(f"Hello {name}")
+
+
+@app.command()
+def goodbye(name: str, formal: bool = False):
+    if formal:
+        typer.echo(f"Goodbye Ms. {name}. Have a good day.")
+    else:
+        typer.echo(f"Bye {name}!")
 
 
 if __name__ == '__main__':
-    soluton1()
-    solution()
+    # soluton1()
+    # solution()
+    # typer.run(main)
+    app()

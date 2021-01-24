@@ -48,6 +48,7 @@ class Algorithm:
         return second
 
 
+
 if __name__ == '__main__':
     A = Algorithm()
     print(A.fib_dict(3))

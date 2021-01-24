@@ -13,12 +13,12 @@ class Solution:
     def print_list_from_tail_to_head(self, listnode):
         if not listnode.val:
             return
-        l = []
+        _list = []
         head = listnode
         while head:
-            l.insert(0, head.val)
+            _list.insert(0, head.val)
             head = head.next
-        return l
+        return _list
 
 
 if __name__ == '__main__':
