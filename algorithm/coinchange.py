@@ -14,6 +14,7 @@ class CoinChange(object):
         """
         dp = [0, 1]
         res = float("INF")
+        print(res)
         if amount < 0:
             return -1
         else:
