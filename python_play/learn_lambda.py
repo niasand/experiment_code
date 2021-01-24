@@ -1,5 +1,5 @@
-#coding: utf-8
-
+# -*- coding: utf-8 -*-
+# @Author: jerry
 
 def map_lambda():
     l = ['foo', 'boo', 'bar']
