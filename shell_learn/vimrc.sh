@@ -9,3 +9,15 @@ git clone https://github.com/fyffyt/vim-configuration.git ~/.vim/dot-vimrc
 cp ~/.vim/dot-vimrc/bundles.vim ~/.vim/
 cp ~/.vim/dot-vimrc/vimrc ~/.vimrc
 cp -r ~/.vim/dot-vimrc/bundle/* ~/.vim/bundle/
+
+
+
+backup: 
+
+mkdir ~/.vim
+mkdir ~/.vim/bundle
+git clone https://github.com/niasand/Vundle.vim.git ~/.vim/bundle/vundle
+git clone https://github.com/niasand/vim-configuration.git ~/.vim/dot-vimrc
+cp ~/.vim/dot-vimrc/bundles.vim ~/.vim/
+cp ~/.vim/dot-vimrc/vimrc ~/.vimrc
+cp -r ~/.vim/dot-vimrc/bundle/* ~/.vim/bundle/
